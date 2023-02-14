@@ -38,6 +38,7 @@ async def process_no_answer(message: Message):
                            LEXICON_RU['scissors']]))
 async def process_game_button(message: Message):
     bot_choice = get_bot_choice()
-    await message.answer(text=f'{LEXICON_RU["bot_choice"]} - {LEXICON_RU[bot_choice]}')
+    await message.answer(text=f'{LEXICON_RU["bot_choice"]} '
+                              f'- {LEXICON_RU[bot_choice]}')
     winner = get_winner(message.text, bot_choice)
     await message.answer(text=LEXICON_RU[winner], reply_markup=yes_no_kb)
