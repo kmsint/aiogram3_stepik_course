@@ -89,5 +89,25 @@ async def process_web_app_command(message: Message):
                          reply_markup=web_app_keyboard)
 
 
+# Создаем кнопки
+btn_1: KeyboardButton = KeyboardButton(
+                                text='Кнопка 1')
+btn_2: KeyboardButton = KeyboardButton(
+                                text='Кнопка 2')
+
+# Создаем объект клавиатуры
+placeholder_exmpl_kb: ReplyKeyboardMarkup = ReplyKeyboardMarkup(
+                                    keyboard=[[btn_1, btn_2]],
+                                    resize_keyboard=True,
+                                    input_field_placeholder='Нажмите кнопку 1')
+
+
+# Этот хэндлер будет срабатывать на команду "/placeholder"
+@dp.message(Command(commands='placeholder'))
+async def process_placeholder_command(message: Message):
+    await message.answer(text='Экспериментируем с полем placeholder',
+                         reply_markup=placeholder_exmpl_kb)
+
+
 if __name__ == '__main__':
     dp.run_polling(bot)
