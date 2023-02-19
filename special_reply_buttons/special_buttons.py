@@ -26,7 +26,6 @@ poll_btn: KeyboardButton = KeyboardButton(
                                 text='Создать опрос/викторину',
                                 request_poll=KeyboardButtonPollType())
 
-
 # Добавляем кнопки в билдер
 kb_builder.row(contact_btn, geo_btn, poll_btn, width=1)
 
