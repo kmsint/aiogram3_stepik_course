@@ -35,17 +35,17 @@ async def process_start_command(message: Message):
 # Создаем объекты инлайн-кнопок
 group_name = 'aiogram_stepik_course'
 url_button_3: InlineKeyboardButton = InlineKeyboardButton(
-                                    text='Группа "Телеграм-боты на AIOgram"',
-                                    url=f'tg://resolve?domain={group_name}')
+    text='Группа "Телеграм-боты на AIOgram"',
+    url=f'tg://resolve?domain={group_name}')
 user_id = 173901673
 url_button_4: InlineKeyboardButton = InlineKeyboardButton(
-                                    text='Автор курса на Степике по телеграм-ботам',
-                                    url=f'tg://user?id={user_id}')
+    text='Автор курса на Степике по телеграм-ботам',
+    url=f'tg://user?id={user_id}')
 
 channel_name = 'toBeAnMLspecialist'
 url_button_5: InlineKeyboardButton = InlineKeyboardButton(
-                                    text='Канал "Стать специалистом по машинному обучению"',
-                                    url=f'https://t.me/{channel_name}')
+    text='Канал "Стать специалистом по машинному обучению"',
+    url=f'https://t.me/{channel_name}')
 
 # Создаем объект инлайн-клавиатуры
 keyboard_2: InlineKeyboardMarkup = InlineKeyboardMarkup(
