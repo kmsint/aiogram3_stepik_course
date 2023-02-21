@@ -1,10 +1,10 @@
 from copy import deepcopy
 
 from aiogram import Router
+from aiogram.filters import Command, CommandStart, Text
 from aiogram.types import CallbackQuery, Message
-from aiogram.filters import CommandStart, Command, Text
-
 from database.database import user_dict_template, users_db
+from filters.filters import IsDelBookmarkCallbackData, IsDigitCallbackData
 from keyboards.bookmarks_kb import (create_bookmarks_keyboard,
                                     create_edit_keyboard)
 from keyboards.pagination_kb import create_pagination_keyboard
@@ -116,7 +116,7 @@ async def process_page_press(callback: CallbackQuery):
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки
 # с закладкой из списка закладок
-@router.callback_query(lambda x: x.data.isdigit())
+@router.callback_query(IsDigitCallbackData())
 async def process_bookmark_press(callback: CallbackQuery):
     text = book[int(callback.data)]
     users_db[callback.from_user.id]['page'] = int(callback.data)
@@ -150,7 +150,7 @@ async def process_cancel_press(callback: CallbackQuery):
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки
 # с закладкой из списка закладок к удалению
-@router.callback_query(lambda x: 'del' in x.data and x.data[:-3].isdigit())
+@router.callback_query(IsDelBookmarkCallbackData())
 async def process_del_bookmark_press(callback: CallbackQuery):
     users_db[callback.from_user.id]['bookmarks'].remove(
                                                     int(callback.data[:-3]))
