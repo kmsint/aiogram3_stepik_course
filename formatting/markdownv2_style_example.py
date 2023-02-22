@@ -4,8 +4,7 @@ from aiogram.types import Message
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
-# BOT_TOKEN = 'BOT TOKEN HERE'
-BOT_TOKEN = '5424991242:AAHFGTld3xzKRVGs_p9IznvrxGEDdhpjJsk'
+BOT_TOKEN = 'BOT TOKEN HERE'
 
 bot: Bot = Bot(BOT_TOKEN, parse_mode='Markdown')
 dp: Dispatcher = Dispatcher()
