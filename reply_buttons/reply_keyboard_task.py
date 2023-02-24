@@ -1,7 +1,6 @@
 from aiogram import Bot, Dispatcher
 from aiogram.filters import CommandStart
-from aiogram.types import (KeyboardButton, Message,
-                           ReplyKeyboardMarkup)
+from aiogram.types import KeyboardButton, Message, ReplyKeyboardMarkup
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
