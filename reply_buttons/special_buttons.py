@@ -76,7 +76,6 @@ web_app_btn: KeyboardButton = KeyboardButton(
 
 # Создаем объект клавиатуры
 web_app_keyboard: ReplyKeyboardMarkup = ReplyKeyboardMarkup(
-                                            text='Start Web App',
                                             keyboard=[[web_app_btn]],
                                             resize_keyboard=True)
 
