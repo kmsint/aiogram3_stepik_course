@@ -15,8 +15,8 @@ async def main():
     # Конфигурируем логирование
     logging.basicConfig(
         level=logging.INFO,
-        format=u'%(filename)s:%(lineno)d #%(levelname)-8s '
-               u'[%(asctime)s] - %(name)s - %(message)s')
+        format='%(filename)s:%(lineno)d #%(levelname)-8s '
+               '[%(asctime)s] - %(name)s - %(message)s')
 
     # Выводим в консоль информацию о начале запуска бота
     logger.info('Starting bot')
@@ -42,10 +42,4 @@ async def main():
 
 
 if __name__ == '__main__':
-    try:
-        # Запускаем функцию main
-        asyncio.run(main())
-    except (KeyboardInterrupt, SystemExit):
-        # Выводим в консоль сообщение об ошибке,
-        # если получены исключения KeyboardInterrupt или SystemExit
-        logger.error('Bot stopped!')
+    asyncio.run(main())

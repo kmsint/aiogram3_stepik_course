@@ -1,11 +1,10 @@
-from aiogram import Router, F
+from aiogram import Router
 
 from aiogram.types import Message
 from lexicon.lexicon import LEXICON_RU
 
 # Инициализируем роутер уровня модуля
 router: Router = Router()
-router.message.filter(F.photo)
 
 
 # Этот хэндлер будет срабатывать на любые ваши сообщения,
