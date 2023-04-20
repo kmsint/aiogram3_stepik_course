@@ -6,7 +6,7 @@ from handlers import other_handlers, user_handlers
 
 
 # Функция конфигурирования и запуска бота
-async def main():
+async def main() -> None:
 
     # Загружаем конфиг в переменную config
     config: Config = load_config()
