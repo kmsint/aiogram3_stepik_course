@@ -6,7 +6,7 @@ from aiogram.types import (CallbackQuery, InlineKeyboardButton,
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
-BOT_TOKEN = '5424991242:AAHFdK_c2gVHMWcvxhmHiE7qaui-iDPBk50'
+BOT_TOKEN = 'BOT TOKEN HERE'
 
 # Создаем объекты бота и диспетчера
 bot: Bot = Bot(token=BOT_TOKEN)
