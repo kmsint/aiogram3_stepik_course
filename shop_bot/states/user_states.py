@@ -7,10 +7,13 @@ class FSMShop(StatesGroup):
     # Создаем экземпляры класса State, последовательно
     # перечисляя возможные состояния, в которых будет находиться
     # бот в разные моменты взаимодейтсвия с пользователем
-    category = State()        # Состояние
-    subcategory = State()     # Состояние
-    goods = State()           # Состояние
+    category = State()        # Состояние выбора категории товара
+    subcategory = State()     # Состояние выбора подкатегории
+    goods = State()           # Состояние выбора товара
+    item = State()            # Состояние просмотра товара
 
+    # Метод для получения предыдущего состояния из списка
+    # состояний стейтгруппы
     @classmethod
     def get_previous_state(cls, state: State) -> State:
         states: Iterator[State] = iter(cls)
