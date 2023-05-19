@@ -1,8 +1,8 @@
-from aiogram import Bot, Dispatcher, F
+from aiogram import Bot, Dispatcher
 from aiogram.filters import CommandStart
 from aiogram.filters.callback_data import CallbackData
-from aiogram.types import (CallbackQuery, InlineKeyboardButton,
-                           InlineKeyboardMarkup, Message)
+from aiogram.types import (CallbackQuery, Message)
+from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
@@ -21,25 +21,23 @@ class GoodsCallbackFactory(CallbackData, prefix="goods"):
     item_id: int
 
 
-# Создаем объекты кнопок, с применением фабрики коллбэков
-button_1: InlineKeyboardButton = InlineKeyboardButton(
-                    text='Категория 1',
-                    callback_data=GoodsCallbackFactory(
-                                            category_id=1,
-                                            subcategory_id=0,
-                                            item_id=0).pack())
+# Инициализируем билдер инлайн-клавиатуры
+builder: InlineKeyboardBuilder = InlineKeyboardBuilder()
 
-button_2: InlineKeyboardButton = InlineKeyboardButton(
-                    text='Категория 2',
-                    callback_data=GoodsCallbackFactory(
-                                            category_id=2,
-                                            subcategory_id=0,
-                                            item_id=0).pack())
-
-# Создаем объект клавиатуры, добавляя в список списки с кнопками
-markup: InlineKeyboardMarkup = InlineKeyboardMarkup(
-                    inline_keyboard=[[button_1],
-                                     [button_2]])
+# Добавляем первую кнопку в билдер
+builder.button(text='Категория 1',
+               callback_data=GoodsCallbackFactory(
+                                category_id=1,
+                                subcategory_id=0,
+                                item_id=0))
+# Добавляем вторую кнопку в билдер
+builder.button(text='Категория 2',
+               callback_data=GoodsCallbackFactory(
+                                category_id=2,
+                                subcategory_id=0,
+                                item_id=0))
+# Сообщаем билдеру схему размещения кнопок (здесь по одной в ряду)
+builder.adjust(1)
 
 
 # Этот хэндлер будет срабатывать на команду /start
@@ -47,7 +45,7 @@ markup: InlineKeyboardMarkup = InlineKeyboardMarkup(
 @dp.message(CommandStart())
 async def process_start_command(message: Message):
     await message.answer(text='Вот такая клавиатура',
-                         reply_markup=markup)
+                         reply_markup=builder.as_markup())
 
 
 # Этот хэндлер будет срабатывать на нажатие любой инлайн кнопки

@@ -76,8 +76,8 @@ def get_field_keyboard(user_id: int) -> InlineKeyboardMarkup:
 
 
 # Этот хэндлер будет срабатывать на команду /start, записывать
-# пользователя в "базу данных" и отправлять пользователю
-# сообщение с клавиатурой
+# пользователя в "базу данных", обнулять игровое поле и отправлять
+# пользователю сообщение с клавиатурой
 @dp.message(CommandStart())
 async def process_start_command(message: Message):
     if message.from_user.id not in users:
