@@ -1,9 +1,8 @@
 import random
 
 from aiogram import Bot, Dispatcher, F
+from aiogram.filters import Command, CommandStart
 from aiogram.types import Message
-from aiogram.filters import Command
-
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
@@ -27,9 +26,9 @@ def get_random_number() -> int:
 
 
 # Этот хэндлер будет срабатывать на команду "/start"
-@dp.message(Command(commands=['start']))
+@dp.message(CommandStart())
 async def process_start_command(message: Message):
-    await message.answer('Привет!\nДавай сыграем в игру "Угадай число"?\n\n'
+    await message.answer('Привет!\nДавайте сыграем в игру "Угадай число"?\n\n'
                          'Чтобы получить правила игры и список доступных '
                          'команд - отправьте команду /help')
     # Если пользователь только запустил бота и его нет в словаре '
