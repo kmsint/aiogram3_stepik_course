@@ -12,7 +12,7 @@ button_no: KeyboardButton = KeyboardButton(text=LEXICON_RU['no_button'])
 # Инициализируем билдер для клавиатуры с кнопками "Давай" и "Не хочу!"
 yes_no_kb_builder: ReplyKeyboardBuilder = ReplyKeyboardBuilder()
 
-# Добавляем кнопки в билдер с параметром width=2
+# Добавляем кнопки в билдер с аргументом width=2
 yes_no_kb_builder.row(button_yes, button_no, width=2)
 
 # Создаем клавиатуру с кнопками "Давай!" и "Не хочу!"
