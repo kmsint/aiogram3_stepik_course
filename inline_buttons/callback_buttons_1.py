@@ -1,5 +1,5 @@
-from aiogram import Bot, Dispatcher
-from aiogram.filters import CommandStart, Text
+from aiogram import Bot, Dispatcher, F
+from aiogram.filters import CommandStart
 from aiogram.types import (CallbackQuery, InlineKeyboardButton,
                            InlineKeyboardMarkup, Message)
 
@@ -36,8 +36,8 @@ async def process_start_command(message: Message):
 
 # Этот хэндлер будет срабатывать на апдейт типа CallbackQuery
 # с data 'big_button_1_pressed' или 'big_button_2_pressed'
-@dp.callback_query(Text(text=['big_button_1_pressed',
-                              'big_button_2_pressed']))
+@dp.callback_query(F.data.in_(['big_button_1_pressed',
+                               'big_button_2_pressed']))
 async def process_buttons_press(callback: CallbackQuery):
     await callback.answer()
 

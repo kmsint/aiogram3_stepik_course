@@ -1,5 +1,5 @@
-from aiogram import Bot, Dispatcher
-from aiogram.filters import CommandStart, Text
+from aiogram import Bot, Dispatcher, F
+from aiogram.filters import CommandStart
 from aiogram.types import (CallbackQuery, InlineKeyboardButton,
                            InlineKeyboardMarkup, Message)
 
@@ -36,7 +36,7 @@ async def process_start_command(message: Message):
 
 # Этот хэндлер будет срабатывать на апдейт типа CallbackQuery
 # с data 'big_button_1_pressed'
-@dp.callback_query(Text(text=['big_button_1_pressed']))
+@dp.callback_query(F.data == 'big_button_1_pressed')
 async def process_button_1_press(callback: CallbackQuery):
     if callback.message.text != 'Была нажата БОЛЬШАЯ КНОПКА 1':
         await callback.message.edit_text(
@@ -47,7 +47,7 @@ async def process_button_1_press(callback: CallbackQuery):
 
 # Этот хэндлер будет срабатывать на апдейт типа CallbackQuery
 # с data 'big_button_2_pressed'
-@dp.callback_query(Text(text=['big_button_2_pressed']))
+@dp.callback_query(F.data == 'big_button_2_pressed')
 async def process_button_2_press(callback: CallbackQuery):
     if callback.message.text != 'Была нажата БОЛЬШАЯ КНОПКА 2':
         await callback.message.edit_text(
