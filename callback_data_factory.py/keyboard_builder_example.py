@@ -60,13 +60,5 @@ async def process_category_press(callback: CallbackQuery,
     await callback.answer()
 
 
-# Этот хэндлер будет срабатывать на нажатие любой
-# инлайн кнопки и распечатывать апдейт в терминал
-@dp.callback_query()
-async def process_any_inline_button_press(callback: CallbackQuery):
-    print(callback.json(indent=4, exclude_none=True))
-    await callback.answer()
-
-
 if __name__ == '__main__':
     dp.run_polling(bot)
