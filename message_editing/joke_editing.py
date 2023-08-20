@@ -1,8 +1,7 @@
 import random
 
-from aiogram import Bot, Dispatcher
-from aiogram.exceptions import TelegramBadRequest
-from aiogram.filters import Command, Text
+from aiogram import Bot, Dispatcher, F
+from aiogram.filters import Command
 from aiogram.types import (CallbackQuery, InlineKeyboardButton,
                            InlineKeyboardMarkup, Message)
 
@@ -40,8 +39,9 @@ async def process_start_command(message: Message):
         reply_markup=markup)
 
 
-# Этот хэндлер будет срабатывать на нажатие кнопки "Хочу еще!"
-@dp.callback_query(Text(text='more'))
+# Этот хэндлер будет срабатывать на нажатие кнопки "Хочу еще!" и
+# отправлять в чат новое сообщение, не удаляя старое
+@dp.callback_query(F.data == 'more')
 async def process_more_press(callback: CallbackQuery):
     keyboard: list[list[InlineKeyboardButton]] = [
         [InlineKeyboardButton(text='Хочу еще!', callback_data='more')]]
@@ -55,8 +55,25 @@ async def process_more_press(callback: CallbackQuery):
         reply_markup=markup)
 
 
+# # Этот хэндлер будет срабатывать на нажатие кнопки "Хочу еще!" и
+# # отправлять в чат новое сообщение с удалением старого
+# @dp.callback_query(F.data == 'more')
+# async def process_more_press(callback: CallbackQuery):
+#     keyboard: list[list[InlineKeyboardButton]] = [
+#         [InlineKeyboardButton(text='Хочу еще!', callback_data='more')]]
+#     markup: InlineKeyboardMarkup = InlineKeyboardMarkup(
+#         inline_keyboard=keyboard)
+#     # Удаляем сообщение, в котором была нажата кнопка
+#     await callback.message.delete()
+#     # Отправляем в чат новое сообщение с шуткой
+#     await callback.message.answer(
+#         text=jokes[random_joke()],
+#         reply_markup=markup)
+
+
 # # Этот хэндлер будет срабатывать на нажатие кнопки "Хочу еще!"
-# @dp.callback_query(Text(text='more'))
+# # и редактировать старое сообщение
+# @dp.callback_query(F.data == 'more')
 # async def process_more_press(callback: CallbackQuery):
 #     keyboard: list[list[InlineKeyboardButton]] = [
 #         [InlineKeyboardButton(text='Хочу еще!', callback_data='more')]]
