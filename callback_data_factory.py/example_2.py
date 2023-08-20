@@ -1,4 +1,4 @@
-from aiogram import Bot, Dispatcher, F
+from aiogram import Bot, Dispatcher
 from aiogram.filters import CommandStart
 from aiogram.filters.callback_data import CallbackData
 from aiogram.types import (CallbackQuery, InlineKeyboardButton,
@@ -59,14 +59,6 @@ async def process_category_press(callback: CallbackQuery,
         text=f'Категория товаров: {callback_data.category_id}\n'
              f'Подкатегория товаров: {callback_data.subcategory_id}\n'
              f'Товар: {callback_data.item_id}')
-    await callback.answer()
-
-
-# Этот хэндлер будет срабатывать на нажатие любой
-# инлайн кнопки и распечатывать апдейт в терминал
-@dp.callback_query()
-async def process_any_inline_button_press(callback: CallbackQuery):
-    print(callback.json(indent=4, exclude_none=True))
     await callback.answer()
 
 
