@@ -1,4 +1,4 @@
-import os
+import os, sys
 
 BOOK_PATH = 'book/Bredberi_Marsianskie-hroniki.txt'
 PAGE_SIZE = 1050
@@ -41,4 +41,4 @@ def prepare_book(path: str) -> None:
 
 
 # Вызов функции prepare_book для подготовки книги из текстового файла
-prepare_book(os.path.join(os.getcwd(), BOOK_PATH))
+prepare_book(os.path.join(sys.path[0], os.path.normpath(BOOK_PATH)))

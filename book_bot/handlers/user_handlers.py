@@ -1,7 +1,7 @@
 from copy import deepcopy
 
-from aiogram import Router
-from aiogram.filters import Command, CommandStart, Text
+from aiogram import F, Router
+from aiogram.filters import Command, CommandStart
 from aiogram.types import CallbackQuery, Message
 from database.database import user_dict_template, users_db
 from filters.filters import IsDelBookmarkCallbackData, IsDigitCallbackData
@@ -75,7 +75,7 @@ async def process_bookmarks_command(message: Message):
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "вперед"
 # во время взаимодействия пользователя с сообщением-книгой
-@router.callback_query(Text(text='forward'))
+@router.callback_query(F.data == 'forward')
 async def process_forward_press(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page'] < len(book):
         users_db[callback.from_user.id]['page'] += 1
@@ -91,7 +91,7 @@ async def process_forward_press(callback: CallbackQuery):
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки "назад"
 # во время взаимодействия пользователя с сообщением-книгой
-@router.callback_query(Text(text='backward'))
+@router.callback_query(F.data == 'backward')
 async def process_backward_press(callback: CallbackQuery):
     if users_db[callback.from_user.id]['page'] > 1:
         users_db[callback.from_user.id]['page'] -= 1
@@ -131,7 +131,7 @@ async def process_bookmark_press(callback: CallbackQuery):
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки
 # "редактировать" под списком закладок
-@router.callback_query(Text(text='edit_bookmarks'))
+@router.callback_query(F.data == 'edit_bookmarks')
 async def process_edit_press(callback: CallbackQuery):
     await callback.message.edit_text(
                 text=LEXICON[callback.data],
@@ -142,7 +142,7 @@ async def process_edit_press(callback: CallbackQuery):
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки
 # "отменить" во время работы со списком закладок (просмотр и редактирование)
-@router.callback_query(Text(text='cancel'))
+@router.callback_query(F.data == 'cancel')
 async def process_cancel_press(callback: CallbackQuery):
     await callback.message.edit_text(text=LEXICON['cancel_text'])
     await callback.answer()
