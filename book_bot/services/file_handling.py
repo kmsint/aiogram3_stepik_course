@@ -1,4 +1,5 @@
-import os, sys
+import os
+import sys
 
 BOOK_PATH = 'book/Bredberi_Marsianskie-hroniki.txt'
 PAGE_SIZE = 1050
