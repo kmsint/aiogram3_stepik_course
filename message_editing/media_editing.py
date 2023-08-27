@@ -1,10 +1,10 @@
-from aiogram import Bot, Dispatcher
+from aiogram import Bot, Dispatcher, F
 from aiogram.types import (CallbackQuery, InlineKeyboardButton,
                            InlineKeyboardMarkup, InputMediaAudio,
                            InputMediaDocument, InputMediaPhoto,
                            InputMediaVideo, Message)
 from aiogram.utils.keyboard import InlineKeyboardBuilder
-from aiogram.filters import CommandStart, Text
+from aiogram.filters import CommandStart
 from aiogram.exceptions import TelegramBadRequest
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
@@ -71,12 +71,12 @@ async def process_start_command(message: Message):
 
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки
-@dp.callback_query(Text(text=['text',
-                              'audio',
-                              'video',
-                              'document',
-                              'photo',
-                              'voice']))
+@dp.callback_query(F.data.in_(['text',
+                               'audio',
+                               'video',
+                               'document',
+                               'photo',
+                               'voice']))
 async def process_button_press(callback: CallbackQuery, bot: Bot):
     markup = get_markup(2, 'photo')
     try:
