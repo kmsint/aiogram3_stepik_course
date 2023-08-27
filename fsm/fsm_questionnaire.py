@@ -1,5 +1,5 @@
 from aiogram import Bot, Dispatcher, F
-from aiogram.filters import Command, CommandStart, StateFilter, Text
+from aiogram.filters import Command, CommandStart, StateFilter
 from aiogram.filters.state import State, StatesGroup
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import default_state
@@ -133,7 +133,7 @@ async def warning_not_age(message: Message):
 # Этот хэндлер будет срабатывать на нажатие кнопки при
 # выборе пола и переводить в состояние отправки фото
 @dp.callback_query(StateFilter(FSMFillForm.fill_gender),
-                   Text(text=['male', 'female', 'undefined_gender']))
+                   F.data.in_(['male', 'female', 'undefined_gender']))
 async def process_gender_press(callback: CallbackQuery, state: FSMContext):
     # Cохраняем пол (callback.data нажатой кнопки) в хранилище,
     # по ключу "gender"
@@ -199,7 +199,7 @@ async def warning_not_photo(message: Message):
 # Этот хэндлер будет срабатывать, если выбрано образование
 # и переводить в состояние согласия получать новости
 @dp.callback_query(StateFilter(FSMFillForm.fill_education),
-                   Text(text=['secondary', 'higher', 'no_edu']))
+                   F.data.in_(['secondary', 'higher', 'no_edu']))
 async def process_education_press(callback: CallbackQuery, state: FSMContext):
     # Cохраняем данные об образовании по ключу "education"
     await state.update_data(education=callback.data)
@@ -237,7 +237,7 @@ async def warning_not_education(message: Message):
 # Этот хэндлер будет срабатывать на выбор получать или
 # не получать новости и выводить из машины состояний
 @dp.callback_query(StateFilter(FSMFillForm.fill_wish_news),
-                   Text(text=['yes_news', 'no_news']))
+                   F.data.in_(['yes_news', 'no_news']))
 async def process_wish_news_press(callback: CallbackQuery, state: FSMContext):
     # Cохраняем данные о получении новостей по ключу "wish_news"
     await state.update_data(wish_news=callback.data == 'yes_news')
