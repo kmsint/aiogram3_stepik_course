@@ -6,7 +6,6 @@ from lexicon.lexicon import LEXICON_RU
 # Инициализируем роутер уровня модуля
 router: Router = Router()
 
-
 # Этот хэндлер срабатывает на команду /start
 @router.message(CommandStart())
 async def process_start_command(message: Message, some_dict):
