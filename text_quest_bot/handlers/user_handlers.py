@@ -1,7 +1,7 @@
 import asyncio
 
-from aiogram import Router
-from aiogram.filters import Command, CommandStart, StateFilter, Text
+from aiogram import F, Router
+from aiogram.filters import Command, CommandStart, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import default_state
 from aiogram.types import CallbackQuery, Message, ReplyKeyboardRemove
@@ -57,8 +57,8 @@ async def process_beginning_command(message: Message, state: FSMContext):
 
 
 # Этот хэндлер будет срабатывать на готовность игрока выполнить миссию
-@user_router.message(Text(text=[LEXICON['yes_ready'],
-                                LEXICON['maybe_ready']]),
+@user_router.message(F.text.in_([LEXICON['yes_ready'],
+                                 LEXICON['maybe_ready']]),
                      StateFilter(FSMStartQuest.ready_state))
 async def process_ready_answer(message: Message, state: FSMContext):
     if message.text == LEXICON['yes_ready']:
@@ -82,7 +82,7 @@ async def process_ready_answer(message: Message, state: FSMContext):
 
 # Этот хэндлер будет срабатывать на отправку сообщения "Осмотреться"
 # в состоянии FSMStartQuest.start_state
-@user_router.message(Text(text=LEXICON['look_around']),
+@user_router.message(F.text == LEXICON['look_around'],
                      StateFilter(FSMStartQuest.start_state))
 async def process_look_around_eng_msg(message: Message):
     for i in range(1, 5):
@@ -96,7 +96,7 @@ async def process_look_around_eng_msg(message: Message):
 
 # Этот хэндлер будет срабатывать на нажатие кнопки "Проверить рюкзак"
 # в любом состоянии, кроме дефолтного
-@user_router.message(Text(text=LEXICON['see_backpack']),
+@user_router.message(F.text == LEXICON['see_backpack'],
                      ~StateFilter(default_state))
 async def process_see_backpack_press(message: Message,
                                      state: FSMContext):
@@ -116,9 +116,9 @@ async def process_see_backpack_press(message: Message,
 # Этот хэндлер будет срабатывать на отправку сообщения
 # "Покинуть двигательный отсек" и переводить в состояние
 # FSMEngineeringCompartment.first_state
-@user_router.message(Text(text=LEXICON['get_out_engine_compartment']),
+@user_router.message(F.text == LEXICON['get_out_engine_compartment'],
                      StateFilter(FSMStartQuest.start_state))
-async def process_get_out_engine_comprtment_msg(message: Message,
+async def process_get_out_engine_compartment_msg(message: Message,
                                                 state: FSMContext):
     await state.set_state(FSMEngineeringCompartment.first_state)
     for i in range(1, 3):
@@ -134,7 +134,7 @@ async def process_get_out_engine_comprtment_msg(message: Message,
 
 # Этот хэндлер будет срабатывать на сообщение "Осмотреться"
 # в состоянии FSMStartQuest.start_state
-@user_router.message(Text(text=LEXICON['look_around']),
+@user_router.message(F.text == LEXICON['look_around'],
                      StateFilter(FSMEngineeringCompartment.first_state))
 async def process_look_around_engineerig_msg(message: Message):
     for i in range(1, 5):
@@ -153,7 +153,7 @@ async def process_look_around_engineerig_msg(message: Message):
 
 
 # Этот хэндлер будет срабатывать на отказ игрока выполнить миссию
-@user_router.message(Text(text=LEXICON['no_ready']),
+@user_router.message(F.text == LEXICON['no_ready'],
                      StateFilter(FSMStartQuest.ready_state))
 async def process_no_ready_answer(message: Message, state: FSMContext):
     await message.answer(LEXICON['no_ready_answer'],
