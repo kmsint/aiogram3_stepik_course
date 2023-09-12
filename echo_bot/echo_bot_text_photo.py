@@ -4,11 +4,11 @@ from aiogram.types import Message
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
-API_TOKEN: str = 'BOT TOKEN HERE'
+BOT_TOKEN = 'BOT TOKEN HERE'
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(token=API_TOKEN)
-dp: Dispatcher = Dispatcher()
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
 
 
 # Этот хэндлер будет срабатывать на команду "/start"
@@ -34,8 +34,8 @@ async def send_echo(message: Message):
 
 
 # Регистрируем хэндлеры
-dp.message.register(process_start_command, Command(commands=["start"]))
-dp.message.register(process_help_command, Command(commands=['help']))
+dp.message.register(process_start_command, Command(commands='start'))
+dp.message.register(process_help_command, Command(commands='help'))
 dp.message.register(send_photo_echo, F.photo)
 dp.message.register(send_echo)
 

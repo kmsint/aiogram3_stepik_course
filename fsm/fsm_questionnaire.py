@@ -11,11 +11,11 @@ from aiogram.types import (CallbackQuery, InlineKeyboardButton,
 BOT_TOKEN = 'BOT TOKEN HERE'
 
 # Инициализируем хранилище (создаем экземпляр класса MemoryStorage)
-storage: MemoryStorage = MemoryStorage()
+storage = MemoryStorage()
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(BOT_TOKEN)
-dp: Dispatcher = Dispatcher(storage=storage)
+bot = Bot(BOT_TOKEN)
+dp = Dispatcher(storage=storage)
 
 # Создаем "базу данных" пользователей
 user_dict: dict[int, dict[str, str | int | bool]] = {}

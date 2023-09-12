@@ -3,11 +3,11 @@ from aiogram.types import BotCommand
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
-API_TOKEN: str = 'BOT TOKEN HERE'
+BOT_TOKEN = 'BOT TOKEN HERE'
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(token=API_TOKEN)
-dp: Dispatcher = Dispatcher()
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
 
 
 # Создаем асинхронную функцию

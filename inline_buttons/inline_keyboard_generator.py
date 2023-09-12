@@ -5,11 +5,11 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
-API_TOKEN: str = 'BOT TOKEN HERE'
+BOT_TOKEN = 'BOT TOKEN HERE'
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(token=API_TOKEN, parse_mode='HTML')
-dp: Dispatcher = Dispatcher()
+bot = Bot(token=BOT_TOKEN, parse_mode='HTML')
+dp = Dispatcher()
 
 LEXICON: dict[str, str] = {
     'but_1': 'Кнопка 1',
@@ -40,7 +40,7 @@ def create_inline_kb(width: int,
                      last_btn: str | None = None,
                      **kwargs: str) -> InlineKeyboardMarkup:
     # Инициализируем билдер
-    kb_builder: InlineKeyboardBuilder = InlineKeyboardBuilder()
+    kb_builder = InlineKeyboardBuilder()
     # Инициализируем список для кнопок
     buttons: list[InlineKeyboardButton] = []
 

@@ -4,7 +4,7 @@ from aiogram.types import Message
 from lexicon.lexicon import LEXICON_RU
 
 # Инициализируем роутер уровня модуля
-router: Router = Router()
+router = Router()
 
 
 # Этот хэндлер будет срабатывать на любые ваши сообщения,

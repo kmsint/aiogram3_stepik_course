@@ -12,8 +12,8 @@ async def main() -> None:
     config: Config = load_config()
 
     # Инициализируем бот и диспетчер
-    bot: Bot = Bot(token=config.tg_bot.token)
-    dp: Dispatcher = Dispatcher()
+    bot = Bot(token=config.tg_bot.token)
+    dp = Dispatcher()
 
     # Регистриуем роутеры в диспетчере
     dp.include_router(user_handlers.router)

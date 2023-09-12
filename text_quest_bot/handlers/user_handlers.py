@@ -9,11 +9,11 @@ from keyboards.kb_utils import create_inline_kb, create_reply_kb
 from lexicon.lexicon import LEXICON
 from states.states import FSMStartQuest, FSMEngineeringCompartment
 
-T_2: int = 0
-T_3: int = 0
-T_4: int = 0
+T_2 = 0
+T_3 = 0
+T_4 = 0
 
-user_router: Router = Router()
+user_router = Router()
 
 
 # Этот хэндлер будет срабатывать на команду "/start" -

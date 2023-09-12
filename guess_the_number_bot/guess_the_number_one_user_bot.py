@@ -6,24 +6,24 @@ from aiogram.types import Message
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
-BOT_TOKEN: str = 'BOT TOKEN HERE'
+BOT_TOKEN = 'BOT TOKEN HERE'
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(BOT_TOKEN)
-dp: Dispatcher = Dispatcher()
+bot = Bot(BOT_TOKEN)
+dp = Dispatcher()
 
 # Количество попыток, доступных пользователю в игре
-ATTEMPTS: int = 5
+ATTEMPTS = 5
 
 # Словарь, в котором будут храниться данные пользователя
-user: dict = {'in_game': False,
-              'secret_number': None,
-              'attempts': None,
-              'total_games': 0,
-              'wins': 0}
+user = {'in_game': False,
+        'secret_number': None,
+        'attempts': None,
+        'total_games': 0,
+        'wins': 0}
 
 
-# Функция возвращающая случайное целое число от 1 до 100
+# Функция, возвращающая случайное целое число от 1 до 100
 def get_random_number() -> int:
     return random.randint(1, 100)
 
@@ -37,7 +37,7 @@ async def process_start_command(message: Message):
 
 
 # Этот хэндлер будет срабатывать на команду "/help"
-@dp.message(Command(commands=['help']))
+@dp.message(Command(commands='help'))
 async def process_help_command(message: Message):
     await message.answer(f'Правила игры:\n\nЯ загадываю число от 1 до 100, '
                          f'а вам нужно его угадать\nУ вас есть {ATTEMPTS} '
@@ -47,14 +47,14 @@ async def process_help_command(message: Message):
 
 
 # Этот хэндлер будет срабатывать на команду "/stat"
-@dp.message(Command(commands=['stat']))
+@dp.message(Command(commands='stat'))
 async def process_stat_command(message: Message):
     await message.answer(f'Всего игр сыграно: {user["total_games"]}\n'
                          f'Игр выиграно: {user["wins"]}')
 
 
 # Этот хэндлер будет срабатывать на команду "/cancel"
-@dp.message(Command(commands=['cancel']))
+@dp.message(Command(commands='cancel'))
 async def process_cancel_command(message: Message):
     if user['in_game']:
         user['in_game'] = False

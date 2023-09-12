@@ -5,7 +5,7 @@ from keyboards.keyboards import game_kb, yes_no_kb
 from lexicon.lexicon_ru import LEXICON_RU
 from services.services import get_bot_choice, get_winner
 
-router: Router = Router()
+router = Router()
 
 
 # Этот хэндлер срабатывает на команду /start
@@ -15,7 +15,7 @@ async def process_start_command(message: Message):
 
 
 # Этот хэндлер срабатывает на команду /help
-@router.message(Command(commands=['help']))
+@router.message(Command(commands='help'))
 async def process_help_command(message: Message):
     await message.answer(text=LEXICON_RU['/help'], reply_markup=yes_no_kb)
 

@@ -7,24 +7,21 @@ from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
-API_TOKEN: str = 'BOT TOKEN HERE'
+BOT_TOKEN = 'BOT TOKEN HERE'
 
-bot: Bot = Bot(token=API_TOKEN)
-dp: Dispatcher = Dispatcher()
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
 
 # Инициализируем билдер
-kb_builder: ReplyKeyboardBuilder = ReplyKeyboardBuilder()
+kb_builder = ReplyKeyboardBuilder()
 
 # Создаем кнопки
-contact_btn: KeyboardButton = KeyboardButton(
-                                text='Отправить телефон',
-                                request_contact=True)
-geo_btn: KeyboardButton = KeyboardButton(
-                                text='Отправить геолокацию',
-                                request_location=True)
-poll_btn: KeyboardButton = KeyboardButton(
-                                text='Создать опрос/викторину',
-                                request_poll=KeyboardButtonPollType())
+contact_btn = KeyboardButton(text='Отправить телефон',
+                             request_contact=True)
+geo_btn = KeyboardButton(text='Отправить геолокацию',
+                         request_location=True)
+poll_btn = KeyboardButton(text='Создать опрос/викторину',
+                          request_poll=KeyboardButtonPollType())
 
 # Добавляем кнопки в билдер
 kb_builder.row(contact_btn, geo_btn, poll_btn, width=1)
@@ -41,18 +38,16 @@ async def process_start_command(message: Message):
                          reply_markup=keyboard)
 
 # Создаем кнопки
-poll_btn_2: KeyboardButton = KeyboardButton(
-                                text='Создать опрос',
-                                request_poll=KeyboardButtonPollType(
-                                                        type='regular'))
+poll_btn_2 = KeyboardButton(text='Создать опрос',
+                            request_poll=KeyboardButtonPollType(
+                                                    type='regular'))
 
-quiz_btn: KeyboardButton = KeyboardButton(
-                                text='Создать викторину',
-                                request_poll=KeyboardButtonPollType(
-                                                        type='quiz'))
+quiz_btn = KeyboardButton(text='Создать викторину',
+                          request_poll=KeyboardButtonPollType(
+                                                    type='quiz'))
 
 # Инициализируем билдер
-poll_kb_builder: ReplyKeyboardBuilder = ReplyKeyboardBuilder()
+poll_kb_builder = ReplyKeyboardBuilder()
 
 # Добавляем кнопки в билдер
 poll_kb_builder.row(poll_btn_2, quiz_btn, width=1)
@@ -70,14 +65,12 @@ async def process_poll_command(message: Message):
 
 
 # Создаем кнопку
-web_app_btn: KeyboardButton = KeyboardButton(
-                                text='Start Web App',
-                                web_app=WebAppInfo(url="https://stepik.org/"))
+web_app_btn = KeyboardButton(text='Start Web App',
+                             web_app=WebAppInfo(url="https://stepik.org/"))
 
 # Создаем объект клавиатуры
-web_app_keyboard: ReplyKeyboardMarkup = ReplyKeyboardMarkup(
-                                            keyboard=[[web_app_btn]],
-                                            resize_keyboard=True)
+web_app_keyboard = ReplyKeyboardMarkup(keyboard=[[web_app_btn]],
+                                       resize_keyboard=True)
 
 
 # Этот хэндлер будет срабатывать на команду "/web_app"
@@ -88,16 +81,14 @@ async def process_web_app_command(message: Message):
 
 
 # Создаем кнопки
-btn_1: KeyboardButton = KeyboardButton(
-                                text='Кнопка 1')
-btn_2: KeyboardButton = KeyboardButton(
-                                text='Кнопка 2')
+btn_1 = KeyboardButton(text='Кнопка 1')
+btn_2 = KeyboardButton(text='Кнопка 2')
 
 # Создаем объект клавиатуры
-placeholder_exmpl_kb: ReplyKeyboardMarkup = ReplyKeyboardMarkup(
-                                    keyboard=[[btn_1, btn_2]],
-                                    resize_keyboard=True,
-                                    input_field_placeholder='Нажмите кнопку 1')
+placeholder_exmpl_kb = ReplyKeyboardMarkup(
+                                keyboard=[[btn_1, btn_2]],
+                                resize_keyboard=True,
+                                input_field_placeholder='Нажмите кнопку 1')
 
 
 # Этот хэндлер будет срабатывать на команду "/placeholder"

@@ -5,16 +5,16 @@ from aiogram.types import (KeyboardButton, Message,
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
-API_TOKEN: str = 'BOT TOKEN HERE'
+BOT_TOKEN = 'BOT TOKEN HERE'
 
-bot: Bot = Bot(token=API_TOKEN)
-dp: Dispatcher = Dispatcher()
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
 
 keyboard: list[list[KeyboardButton]] = [[KeyboardButton(
     text=f'Кнопка {j * 3 + i}') for i in range(1, 4)] for j in range(3)]
 
 # Создаем объект клавиатуры, добавляя в него кнопки
-my_keyboard: ReplyKeyboardMarkup = ReplyKeyboardMarkup(
+my_keyboard = ReplyKeyboardMarkup(
     keyboard=keyboard,
     resize_keyboard=True)
 

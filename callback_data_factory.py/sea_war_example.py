@@ -12,14 +12,14 @@ from aiogram.types import (CallbackQuery, InlineKeyboardButton,
 BOT_TOKEN = 'BOT TOKEN HERE'
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(token=BOT_TOKEN)
-dp: Dispatcher = Dispatcher()
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
 
 # Инициализируем константу размера игрового поля
-FIELD_SIZE: int = 8
+FIELD_SIZE = 8
 
 # Создаем словарь соответствий
-LEXICON: dict = {
+LEXICON = {
     '/start': 'Вот твое поле. Можешь делать ход',
     0: ' ',
     1: '🌊',
@@ -70,7 +70,7 @@ def get_field_keyboard(user_id: int) -> InlineKeyboardMarkup:
                 text=LEXICON[users[user_id]['field'][i][j]],
                 callback_data=FieldCallbackFactory(x=i, y=j).pack()))
 
-    markup: InlineKeyboardMarkup = InlineKeyboardMarkup(
+    markup = InlineKeyboardMarkup(
         inline_keyboard=array_buttons)
     return markup
 

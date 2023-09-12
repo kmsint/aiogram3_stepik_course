@@ -2,13 +2,13 @@ import requests
 import time
 
 
-API_URL: str = 'https://api.telegram.org/bot'
-API_CATS_URL: str = 'https://api.thecatapi.com/v1/images/search'
-BOT_TOKEN: str = 'BOT_TOKEN_HERE'
-ERROR_TEXT: str = 'Здесь должна была быть картинка с котиком :('
+API_URL = 'https://api.telegram.org/bot'
+API_CATS_URL = 'https://api.thecatapi.com/v1/images/search'
+BOT_TOKEN = 'BOT_TOKEN_HERE'
+ERROR_TEXT = 'Здесь должна была быть картинка с котиком :('
 
-offset: int = -2
-counter: int = 0
+offset = -2
+counter = 0
 cat_response: requests.Response
 cat_link: str
 

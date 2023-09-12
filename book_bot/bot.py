@@ -25,9 +25,9 @@ async def main():
     config: Config = load_config()
 
     # Инициализируем бот и диспетчер
-    bot: Bot = Bot(token=config.tg_bot.token,
+    bot = Bot(token=config.tg_bot.token,
                    parse_mode='HTML')
-    dp: Dispatcher = Dispatcher()
+    dp = Dispatcher()
 
     # Настраиваем главное меню бота
     await set_main_menu(bot)

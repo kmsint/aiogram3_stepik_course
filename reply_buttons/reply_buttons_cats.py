@@ -4,21 +4,20 @@ from aiogram.types import KeyboardButton, Message, ReplyKeyboardMarkup
 
 # Вместо BOT TOKEN HERE нужно вставить токен вашего бота,
 # полученный у @BotFather
-API_TOKEN: str = 'BOT TOKEN HERE'
+BOT_TOKEN = 'BOT TOKEN HERE'
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(token=API_TOKEN)
-dp: Dispatcher = Dispatcher()
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
 
 # Создаем объекты кнопок
-button_1: KeyboardButton = KeyboardButton(text='Собак 🦮')
-button_2: KeyboardButton = KeyboardButton(text='Огурцов 🥒')
+button_1 = KeyboardButton(text='Собак 🦮')
+button_2 = KeyboardButton(text='Огурцов 🥒')
 
 # Создаем объект клавиатуры, добавляя в него кнопки
-keyboard: ReplyKeyboardMarkup = ReplyKeyboardMarkup(
-                                    keyboard=[[button_1, button_2]],
-                                    resize_keyboard=True,
-                                    one_time_keyboard=True)
+keyboard = ReplyKeyboardMarkup(keyboard=[[button_1, button_2]],
+                               resize_keyboard=True,
+                               one_time_keyboard=True)
 
 
 # Этот хэндлер будет срабатывать на команду "/start"

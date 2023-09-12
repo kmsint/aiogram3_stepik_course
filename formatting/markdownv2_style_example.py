@@ -6,8 +6,8 @@ from aiogram.types import Message
 # полученный у @BotFather
 BOT_TOKEN = 'BOT TOKEN HERE'
 
-bot: Bot = Bot(BOT_TOKEN, parse_mode='MarkdownV2')
-dp: Dispatcher = Dispatcher()
+bot = Bot(BOT_TOKEN, parse_mode='MarkdownV2')
+dp = Dispatcher()
 
 
 # Этот хэндлер будет срабатывать на команду "/start"

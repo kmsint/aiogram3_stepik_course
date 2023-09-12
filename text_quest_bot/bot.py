@@ -25,12 +25,12 @@ async def main():
 
     # Загружаем конфиг в переменную config
     config: Config = load_config()
-    storage: MemoryStorage = MemoryStorage()
+    storage = MemoryStorage()
 
     # Инициализируем бот и диспетчер
-    bot: Bot = Bot(token=config.tg_bot.token,
-                   parse_mode='HTML')
-    dp: Dispatcher = Dispatcher(storage=storage)
+    bot = Bot(token=config.tg_bot.token,
+              parse_mode='HTML')
+    dp = Dispatcher(storage=storage)
 
     # Настраиваем главное меню бота
     await set_main_menu(bot)

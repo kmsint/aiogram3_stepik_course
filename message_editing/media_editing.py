@@ -11,8 +11,8 @@ from aiogram.exceptions import TelegramBadRequest
 # полученный у @BotFather
 BOT_TOKEN = 'BOT TOKEN HERE'
 
-bot: Bot = Bot(BOT_TOKEN)
-dp: Dispatcher = Dispatcher()
+bot = Bot(BOT_TOKEN)
+dp = Dispatcher()
 
 
 LEXICON: dict[str, str] = {
@@ -40,7 +40,7 @@ LEXICON: dict[str, str] = {
 # Функция для генерации клавиатур с инлайн-кнопками
 def get_markup(width: int, *args, **kwargs) -> InlineKeyboardMarkup:
     # Инициализируем билдер
-    kb_builder: InlineKeyboardBuilder = InlineKeyboardBuilder()
+    kb_builder = InlineKeyboardBuilder()
     # Инициализируем список для кнопок
     buttons: list[InlineKeyboardButton] = []
     # Заполняем список кнопками из аргументов args и kwargs

@@ -11,14 +11,14 @@ from aiogram.types import (CallbackQuery, InlineKeyboardButton,
 BOT_TOKEN = 'BOT TOKEN HERE'
 
 # Инициализируем Redis
-redis: Redis = Redis(host='localhost')
+redis = Redis(host='localhost')
 
 # Инициализируем хранилище (создаем экземпляр класса MemoryStorage)
-storage: RedisStorage = RedisStorage(redis=redis)
+storage = RedisStorage(redis=redis)
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(BOT_TOKEN)
-dp: Dispatcher = Dispatcher(storage=storage)
+bot = Bot(BOT_TOKEN)
+dp = Dispatcher(storage=storage)
 
 # Создаем "базу данных" пользователей
 user_dict: dict[int, dict[str, str | int | bool]] = {}

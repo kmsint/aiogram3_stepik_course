@@ -9,8 +9,8 @@ from aiogram.types import (CallbackQuery, InlineKeyboardButton,
 BOT_TOKEN = 'BOT TOKEN HERE'
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(token=BOT_TOKEN)
-dp: Dispatcher = Dispatcher()
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
 
 
 # Создаем свой класс фабрики коллбэков, указывая префикс
@@ -22,14 +22,14 @@ class GoodsCallbackFactory(CallbackData, prefix="goods"):
 
 
 # Создаем объекты кнопок, с применением фабрики коллбэков
-button_1: InlineKeyboardButton = InlineKeyboardButton(
+button_1 = InlineKeyboardButton(
                     text='Категория 1',
                     callback_data=GoodsCallbackFactory(
                                             category_id=1,
                                             subcategory_id=0,
                                             item_id=0).pack())
 
-button_2: InlineKeyboardButton = InlineKeyboardButton(
+button_2 = InlineKeyboardButton(
                     text='Категория 2',
                     callback_data=GoodsCallbackFactory(
                                             category_id=2,
@@ -37,7 +37,7 @@ button_2: InlineKeyboardButton = InlineKeyboardButton(
                                             item_id=0).pack())
 
 # Создаем объект клавиатуры, добавляя в список списки с кнопками
-markup: InlineKeyboardMarkup = InlineKeyboardMarkup(
+markup = InlineKeyboardMarkup(
                     inline_keyboard=[[button_1],
                                      [button_2]])
 

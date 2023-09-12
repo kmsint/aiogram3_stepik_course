@@ -9,8 +9,8 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 BOT_TOKEN = 'BOT TOKEN HERE'
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(token=BOT_TOKEN)
-dp: Dispatcher = Dispatcher()
+bot = Bot(token=BOT_TOKEN)
+dp = Dispatcher()
 
 
 # Создаем свой класс фабрики коллбэков, указывая префикс
@@ -22,7 +22,7 @@ class GoodsCallbackFactory(CallbackData, prefix="goods"):
 
 
 # Инициализируем билдер инлайн-клавиатуры
-builder: InlineKeyboardBuilder = InlineKeyboardBuilder()
+builder = InlineKeyboardBuilder()
 
 # Добавляем первую кнопку в билдер
 builder.button(text='Категория 1',

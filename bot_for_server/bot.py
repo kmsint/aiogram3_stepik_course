@@ -12,11 +12,11 @@ config: Config = load_config()
 BOT_TOKEN: str = config.tg_bot.token
 
 # Инициализируем хранилище (создаем экземпляр класса MemoryStorage)
-storage: MemoryStorage = MemoryStorage()
+storage = MemoryStorage()
 
 # Создаем объекты бота и диспетчера
-bot: Bot = Bot(BOT_TOKEN)
-dp: Dispatcher = Dispatcher(storage=storage)
+bot = Bot(BOT_TOKEN)
+dp = Dispatcher(storage=storage)
 
 # Создаем "базу данных" пользователей
 user_dict: dict[int, dict[str, str | int | bool]] = {}

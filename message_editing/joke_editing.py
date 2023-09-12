@@ -9,8 +9,8 @@ from aiogram.types import (CallbackQuery, InlineKeyboardButton,
 # полученный у @BotFather
 BOT_TOKEN = 'BOT TOKEN HERE'
 
-bot: Bot = Bot(BOT_TOKEN)
-dp: Dispatcher = Dispatcher()
+bot = Bot(BOT_TOKEN)
+dp = Dispatcher()
 
 
 jokes: dict[int, str] = {
@@ -32,8 +32,7 @@ def random_joke() -> int:
 async def process_start_command(message: Message):
     keyboard: list[list[InlineKeyboardButton]] = [
         [InlineKeyboardButton(text='Хочу еще!', callback_data='more')]]
-    markup: InlineKeyboardMarkup = InlineKeyboardMarkup(
-        inline_keyboard=keyboard)
+    markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
     await message.answer(
         text=jokes[random_joke()],
         reply_markup=markup)
@@ -45,8 +44,7 @@ async def process_start_command(message: Message):
 async def process_more_press(callback: CallbackQuery):
     keyboard: list[list[InlineKeyboardButton]] = [
         [InlineKeyboardButton(text='Хочу еще!', callback_data='more')]]
-    markup: InlineKeyboardMarkup = InlineKeyboardMarkup(
-        inline_keyboard=keyboard)
+    markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
     # Отвечаем на callback, чтобы убрать часики
     await callback.answer()
     # Отправляем в чат новое сообщение с шуткой
@@ -61,8 +59,7 @@ async def process_more_press(callback: CallbackQuery):
 # async def process_more_press(callback: CallbackQuery):
 #     keyboard: list[list[InlineKeyboardButton]] = [
 #         [InlineKeyboardButton(text='Хочу еще!', callback_data='more')]]
-#     markup: InlineKeyboardMarkup = InlineKeyboardMarkup(
-#         inline_keyboard=keyboard)
+#     markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
 #     # Удаляем сообщение, в котором была нажата кнопка
 #     await callback.message.delete()
 #     # Отправляем в чат новое сообщение с шуткой
@@ -77,8 +74,7 @@ async def process_more_press(callback: CallbackQuery):
 # async def process_more_press(callback: CallbackQuery):
 #     keyboard: list[list[InlineKeyboardButton]] = [
 #         [InlineKeyboardButton(text='Хочу еще!', callback_data='more')]]
-#     markup: InlineKeyboardMarkup = InlineKeyboardMarkup(
-#         inline_keyboard=keyboard)
+#     markup = InlineKeyboardMarkup(inline_keyboard=keyboard)
 #     # Редактируем сообщение
 #     await callback.message.edit_text(
 #         text=jokes[random_joke()],

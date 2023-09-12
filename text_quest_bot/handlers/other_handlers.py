@@ -1,7 +1,7 @@
 from aiogram import Router
 from aiogram.types import Message
 
-other_router: Router = Router()
+other_router = Router()
 
 
 # Этот хэндлер будет реагировать на любые сообщения пользователя,

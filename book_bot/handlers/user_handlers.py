@@ -11,7 +11,7 @@ from keyboards.pagination_kb import create_pagination_keyboard
 from lexicon.lexicon import LEXICON
 from services.file_handling import book
 
-router: Router = Router()
+router = Router()
 
 
 # Этот хэндлер будет срабатывать на команду "/start" -

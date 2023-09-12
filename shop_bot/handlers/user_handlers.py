@@ -3,7 +3,7 @@ from aiogram.filters import Command, CommandStart, Text
 from aiogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup
 from lexicon.lexicon_ru import LEXICON_RU
 
-router: Router = Router()
+router = Router()
 
 
 # Этот хэндлер срабатывает на команду /start

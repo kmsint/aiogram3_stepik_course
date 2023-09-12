@@ -9,7 +9,7 @@ def create_inline_kb(width: int,
                      *args: str,
                      **kwargs: str) -> InlineKeyboardMarkup:
     # Инициализируем билдер
-    kb_builder: InlineKeyboardBuilder = InlineKeyboardBuilder()
+    kb_builder = InlineKeyboardBuilder()
     # Инициализируем список для кнопок
     buttons: list[InlineKeyboardButton] = []
 

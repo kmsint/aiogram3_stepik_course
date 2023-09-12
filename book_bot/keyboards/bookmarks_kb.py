@@ -6,7 +6,7 @@ from services.file_handling import book
 
 def create_bookmarks_keyboard(*args: int) -> InlineKeyboardMarkup:
     # Создаем объект клавиатуры
-    kb_builder: InlineKeyboardBuilder = InlineKeyboardBuilder()
+    kb_builder = InlineKeyboardBuilder()
     # Наполняем клавиатуру кнопками-закладками в порядке возрастания
     for button in sorted(args):
         kb_builder.row(InlineKeyboardButton(
@@ -25,7 +25,7 @@ def create_bookmarks_keyboard(*args: int) -> InlineKeyboardMarkup:
 
 def create_edit_keyboard(*args: int) -> InlineKeyboardMarkup:
     # Создаем объект клавиатуры
-    kb_builder: InlineKeyboardBuilder = InlineKeyboardBuilder()
+    kb_builder = InlineKeyboardBuilder()
     # Наполняем клавиатуру кнопками-закладками в порядке возрастания
     for button in sorted(args):
         kb_builder.row(InlineKeyboardButton(
