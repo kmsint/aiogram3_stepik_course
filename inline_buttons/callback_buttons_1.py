@@ -14,11 +14,12 @@ dp = Dispatcher()
 # Создаем объекты инлайн-кнопок
 big_button_1 = InlineKeyboardButton(
     text='БОЛЬШАЯ КНОПКА 1',
-    callback_data='big_button_1_pressed')
-
+    callback_data='big_button_1_pressed'
+)
 big_button_2 = InlineKeyboardButton(
     text='БОЛЬШАЯ КНОПКА 2',
-    callback_data='big_button_2_pressed')
+    callback_data='big_button_2_pressed'
+)
 
 # Создаем объект инлайн-клавиатуры
 keyboard = InlineKeyboardMarkup(
@@ -30,8 +31,10 @@ keyboard = InlineKeyboardMarkup(
 # и отправлять в чат клавиатуру с инлайн-кнопками
 @dp.message(CommandStart())
 async def process_start_command(message: Message):
-    await message.answer(text='Это инлайн-кнопки. Нажми на любую!',
-                         reply_markup=keyboard)
+    await message.answer(
+        text='Это инлайн-кнопки. Нажми на любую!',
+        reply_markup=keyboard
+    )
 
 
 # Этот хэндлер будет срабатывать на апдейт типа CallbackQuery

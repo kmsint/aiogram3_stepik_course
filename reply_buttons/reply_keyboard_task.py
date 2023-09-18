@@ -12,7 +12,8 @@ dp = Dispatcher()
 
 # Создаем список списков с кнопками
 keyboard: list[KeyboardButton] = [
-    KeyboardButton(text=str(i)) for i in range(1, 8)]
+    KeyboardButton(text=str(i)) for i in range(1, 8)
+]
 
 # Инициализируем билдер
 builder = ReplyKeyboardBuilder()
@@ -26,8 +27,10 @@ my_keyboard: ReplyKeyboardMarkup = builder.as_markup(resize_keyboard=True)
 # Этот хэндлер будет срабатывать на команду "/start"
 @dp.message(CommandStart())
 async def process_start_command(message: Message):
-    await message.answer(text='Экспериментируем с обычными кнопками',
-                         reply_markup=my_keyboard)
+    await message.answer(
+        text='Экспериментируем с обычными кнопками',
+        reply_markup=my_keyboard
+    )
 
 
 if __name__ == '__main__':

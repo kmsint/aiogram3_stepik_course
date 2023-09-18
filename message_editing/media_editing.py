@@ -34,7 +34,7 @@ LEXICON: dict[str, str] = {
     'document_id2': 'BQACAgIAAxkBAAIVFGPKZCYnp07PHr_OwXIKo5Z8fxcEAAJ3IwACkhBRSoZiZmUOrb4nLQQ',
     'video_id1': 'BAACAgIAAxkBAAIVFmPKZL_cgfokLm3pBU5w3zspn3-lAAJ5IwACkhBRSs4Lk37jVF8xLQQ',
     'video_id2': 'BAACAgIAAxkBAAIVGGPKZTURYRphKtnnVFHy8Oa6OxPXAAJ6IwACkhBRSnfUGQW2UKeBLQQ',
-    }
+}
 
 
 # Функция для генерации клавиатур с инлайн-кнопками
@@ -48,12 +48,14 @@ def get_markup(width: int, *args, **kwargs) -> InlineKeyboardMarkup:
         for button in args:
             buttons.append(InlineKeyboardButton(
                 text=LEXICON[button] if button in LEXICON else button,
-                callback_data=button))
+                callback_data=button
+            ))
     if kwargs:
         for button, text in kwargs.items():
             buttons.append(InlineKeyboardButton(
                 text=text,
-                callback_data=button))
+                callback_data=button
+            ))
     # Распаковываем список с кнопками в билдер методом row c параметром width
     kb_builder.row(*buttons, width=width)
     # Возвращаем объект инлайн-клавиатуры
@@ -65,44 +67,44 @@ def get_markup(width: int, *args, **kwargs) -> InlineKeyboardMarkup:
 async def process_start_command(message: Message):
     markup = get_markup(2, 'photo')
     await message.answer_photo(
-                        photo=LEXICON['photo_id1'],
-                        caption='Это фото 1',
-                        reply_markup=markup)
+        photo=LEXICON['photo_id1'],
+        caption='Это фото 1',
+        reply_markup=markup
+    )
 
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки
-@dp.callback_query(F.data.in_(['text',
-                               'audio',
-                               'video',
-                               'document',
-                               'photo',
-                               'voice']))
+@dp.callback_query(F.data.in_(
+    ['text', 'audio', 'video', 'document', 'photo', 'voice']
+))
 async def process_button_press(callback: CallbackQuery, bot: Bot):
     markup = get_markup(2, 'photo')
     try:
         await bot.edit_message_media(
-                            chat_id=callback.message.chat.id,
-                            message_id=callback.message.message_id,
-                            media=InputMediaPhoto(
-                                    media=LEXICON['photo_id2'],
-                                    caption='Это фото 2'),
-                            reply_markup=markup)
+            chat_id=callback.message.chat.id,
+            message_id=callback.message.message_id,
+            media=InputMediaPhoto(
+                media=LEXICON['photo_id2'],
+                caption='Это фото 2'
+            ),
+            reply_markup=markup
+        )
     except TelegramBadRequest:
         await bot.edit_message_media(
-                            chat_id=callback.message.chat.id,
-                            message_id=callback.message.message_id,
-                            media=InputMediaPhoto(
-                                    media=LEXICON['photo_id1'],
-                                    caption='Это фото 1'),
-                            reply_markup=markup)
+            chat_id=callback.message.chat.id,
+            message_id=callback.message.message_id,
+            media=InputMediaPhoto(
+                media=LEXICON['photo_id1'],
+                caption='Это фото 1'
+            ),
+            reply_markup=markup
+        )
 
 
 # Этот хэндлер будет срабатывать на все остальные сообщения
 @dp.message()
 async def send_echo(message: Message):
-    print(message)
-    await message.answer(
-            text='Не понимаю')
+    await message.answer(text='Не понимаю')
 
 
 if __name__ == '__main__':

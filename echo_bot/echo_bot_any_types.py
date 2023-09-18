@@ -20,8 +20,10 @@ async def process_start_command(message: Message):
 # Этот хэндлер будет срабатывать на команду "/help"
 @dp.message(Command(commands='help'))
 async def process_help_command(message: Message):
-    await message.answer('Напиши мне что-нибудь и в ответ '
-                         'я пришлю тебе твое сообщение')
+    await message.answer(
+        'Напиши мне что-нибудь и в ответ '
+        'я пришлю тебе твое сообщение'
+    )
 
 
 # Этот хэндлер будет срабатывать на любые ваши сообщения,
@@ -31,8 +33,10 @@ async def send_echo(message: Message):
     try:
         await message.send_copy(chat_id=message.chat.id)
     except TypeError:
-        await message.reply(text='Данный тип апдейтов не поддерживается '
-                                 'методом send_copy')
+        await message.reply(
+            text='Данный тип апдейтов не поддерживается '
+                 'методом send_copy'
+        )
 
 
 if __name__ == '__main__':

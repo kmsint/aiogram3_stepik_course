@@ -27,7 +27,8 @@ LEXICON = {
     'miss': 'Мимо!',
     'hit': 'Попал!',
     'used': 'Вы уже стреляли сюда!',
-    'next_move': 'Делайте ваш следующий ход'}
+    'next_move': 'Делайте ваш следующий ход'
+}
 
 # Хардкодим расположение кораблей на игровом поле
 ships: list[list[int]] = [
@@ -38,7 +39,8 @@ ships: list[list[int]] = [
     [0, 0, 0, 0, 0, 0, 0, 0],
     [1, 0, 1, 1, 0, 0, 0, 1],
     [0, 0, 0, 0, 0, 1, 0, 0],
-    [0, 0, 1, 1, 0, 0, 0, 0]]
+    [0, 0, 1, 1, 0, 0, 0, 0]
+]
 
 # Инициализируем "базу данных" пользователей
 users: dict[int, dict[str, list]] = {}
@@ -54,8 +56,10 @@ class FieldCallbackFactory(CallbackData, prefix="user_field"):
 # Функция, которая пересоздает новое поле для каждого игрока
 def reset_field(user_id: int) -> None:
     users[user_id]['ships'] = copy.deepcopy(ships)
-    users[user_id]['field'] = [[0 for _ in range(FIELD_SIZE)]
-                               for _ in range(FIELD_SIZE)]
+    users[user_id]['field'] = [
+        [0 for _ in range(FIELD_SIZE)]
+        for _ in range(FIELD_SIZE)
+    ]
 
 
 # Функция, генерирующая клавиатуру в зависимости от данных из
@@ -68,11 +72,10 @@ def get_field_keyboard(user_id: int) -> InlineKeyboardMarkup:
         for j in range(FIELD_SIZE):
             array_buttons[i].append(InlineKeyboardButton(
                 text=LEXICON[users[user_id]['field'][i][j]],
-                callback_data=FieldCallbackFactory(x=i, y=j).pack()))
+                callback_data=FieldCallbackFactory(x=i, y=j).pack())
+            )
 
-    markup = InlineKeyboardMarkup(
-        inline_keyboard=array_buttons)
-    return markup
+    return InlineKeyboardMarkup(inline_keyboard=array_buttons)
 
 
 # Этот хэндлер будет срабатывать на команду /start, записывать
@@ -85,7 +88,8 @@ async def process_start_command(message: Message):
     reset_field(message.from_user.id)
     await message.answer(
         text=LEXICON['/start'],
-        reply_markup=get_field_keyboard(message.from_user.id))
+        reply_markup=get_field_keyboard(message.from_user.id)
+    )
 
 
 # Этот хэндлер будет срабатывать на нажатие любой инлайн-кнопки на поле,
@@ -96,11 +100,11 @@ async def process_category_press(callback: CallbackQuery,
     field = users[callback.from_user.id]['field']
     ships = users[callback.from_user.id]['ships']
     if field[callback_data.x][callback_data.y] == 0 and \
-            ships[callback_data.x][callback_data.y] == 0:
+    ships[callback_data.x][callback_data.y] == 0:
         answer = LEXICON['miss']
         field[callback_data.x][callback_data.y] = 1
     elif field[callback_data.x][callback_data.y] == 0 and \
-            ships[callback_data.x][callback_data.y] == 1:
+    ships[callback_data.x][callback_data.y] == 1:
         answer = LEXICON['hit']
         field[callback_data.x][callback_data.y] = 2
     else:

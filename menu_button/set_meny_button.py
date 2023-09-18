@@ -22,7 +22,8 @@ async def set_main_menu(bot: Bot):
         BotCommand(command='/contacts',
                    description='Другие способы связи'),
         BotCommand(command='/payments',
-                   description='Платежи')]
+                   description='Платежи')
+    ]
 
     await bot.set_my_commands(main_menu_commands)
 

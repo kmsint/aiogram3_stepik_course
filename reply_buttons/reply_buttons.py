@@ -16,14 +16,17 @@ keyboard: list[list[KeyboardButton]] = [[KeyboardButton(
 # Создаем объект клавиатуры, добавляя в него кнопки
 my_keyboard = ReplyKeyboardMarkup(
     keyboard=keyboard,
-    resize_keyboard=True)
+    resize_keyboard=True
+)
 
 
 # Этот хэндлер будет срабатывать на команду "/start"
 @dp.message(CommandStart())
 async def process_start_command(message: Message):
-    await message.answer(text='Экспериментируем с обычными кнопками',
-                         reply_markup=my_keyboard)
+    await message.answer(
+        text='Экспериментируем с обычными кнопками',
+        reply_markup=my_keyboard
+    )
 
 
 if __name__ == '__main__':

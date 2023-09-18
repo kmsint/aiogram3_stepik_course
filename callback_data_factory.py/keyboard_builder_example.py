@@ -25,17 +25,23 @@ class GoodsCallbackFactory(CallbackData, prefix="goods"):
 builder = InlineKeyboardBuilder()
 
 # Добавляем первую кнопку в билдер
-builder.button(text='Категория 1',
-               callback_data=GoodsCallbackFactory(
-                                category_id=1,
-                                subcategory_id=0,
-                                item_id=0))
+builder.button(
+    text='Категория 1',
+    callback_data=GoodsCallbackFactory(
+        category_id=1,
+        subcategory_id=0,
+        item_id=0
+    )
+)
 # Добавляем вторую кнопку в билдер
-builder.button(text='Категория 2',
-               callback_data=GoodsCallbackFactory(
-                                category_id=2,
-                                subcategory_id=0,
-                                item_id=0))
+builder.button(
+    text='Категория 2',
+    callback_data=GoodsCallbackFactory(
+        category_id=2,
+        subcategory_id=0,
+        item_id=0
+    )
+)
 # Сообщаем билдеру схему размещения кнопок (здесь по одной в ряду)
 builder.adjust(1)
 
@@ -44,8 +50,10 @@ builder.adjust(1)
 # и отправлять пользователю сообщение с клавиатурой
 @dp.message(CommandStart())
 async def process_start_command(message: Message):
-    await message.answer(text='Вот такая клавиатура',
-                         reply_markup=builder.as_markup())
+    await message.answer(
+        text='Вот такая клавиатура',
+        reply_markup=builder.as_markup()
+    )
 
 
 # Этот хэндлер будет срабатывать на нажатие любой инлайн кнопки
@@ -56,7 +64,8 @@ async def process_category_press(callback: CallbackQuery,
     await callback.message.answer(
         text=f'Категория товаров: {callback_data.category_id}\n'
              f'Подкатегория товаров: {callback_data.subcategory_id}\n'
-             f'Товар: {callback_data.item_id}')
+             f'Товар: {callback_data.item_id}'
+    )
     await callback.answer()
 
 

@@ -23,31 +23,37 @@ class GoodsCallbackFactory(CallbackData, prefix="goods"):
 
 # Создаем объекты кнопок, с применением фабрики коллбэков
 button_1 = InlineKeyboardButton(
-                    text='Категория 1',
-                    callback_data=GoodsCallbackFactory(
-                                            category_id=1,
-                                            subcategory_id=0,
-                                            item_id=0).pack())
+    text='Категория 1',
+    callback_data=GoodsCallbackFactory(
+        category_id=1,
+        subcategory_id=0,
+        item_id=0
+    ).pack()
+)
 
 button_2 = InlineKeyboardButton(
-                    text='Категория 2',
-                    callback_data=GoodsCallbackFactory(
-                                            category_id=2,
-                                            subcategory_id=0,
-                                            item_id=0).pack())
+    text='Категория 2',
+    callback_data=GoodsCallbackFactory(
+        category_id=2,
+        subcategory_id=0,
+        item_id=0
+    ).pack()
+)
 
 # Создаем объект клавиатуры, добавляя в список списки с кнопками
 markup = InlineKeyboardMarkup(
-                    inline_keyboard=[[button_1],
-                                     [button_2]])
+    inline_keyboard=[[button_1], [button_2]]
+)
 
 
 # Этот хэндлер будет срабатывать на команду /start
 # и отправлять пользователю сообщение с клавиатурой
 @dp.message(CommandStart())
 async def process_start_command(message: Message):
-    await message.answer(text='Вот такая клавиатура',
-                         reply_markup=markup)
+    await message.answer(
+        text='Вот такая клавиатура',
+        reply_markup=markup
+    )
 
 
 # Этот хэндлер будет срабатывать на нажатие любой

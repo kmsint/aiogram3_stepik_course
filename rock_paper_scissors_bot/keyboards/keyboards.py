@@ -17,8 +17,9 @@ yes_no_kb_builder.row(button_yes, button_no, width=2)
 
 # Создаем клавиатуру с кнопками "Давай!" и "Не хочу!"
 yes_no_kb: ReplyKeyboardMarkup = yes_no_kb_builder.as_markup(
-                                                one_time_keyboard=True,
-                                                resize_keyboard=True)
+    one_time_keyboard=True,
+    resize_keyboard=True
+)
 
 # ------- Создаем игровую клавиатуру без использования билдера -------
 
@@ -29,7 +30,9 @@ button_3 = KeyboardButton(text=LEXICON_RU['paper'])
 
 # Создаем игровую клавиатуру с кнопками "Камень 🗿",
 # "Ножницы ✂" и "Бумага 📜" как список списков
-game_kb = ReplyKeyboardMarkup(keyboard=[[button_1],
-                                        [button_2],
-                                        [button_3]],
-                              resize_keyboard=True)
+game_kb = ReplyKeyboardMarkup(
+    keyboard=[[button_1],
+              [button_2],
+              [button_3]],
+    resize_keyboard=True
+)
