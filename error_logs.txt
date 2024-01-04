@@ -1,0 +1,1 @@
+[2024-01-04 17:59:45,555] #ERROR    module_1.py:50 - module_1:main - Лог ERROR

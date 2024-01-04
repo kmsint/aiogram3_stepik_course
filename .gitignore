@@ -8,3 +8,4 @@ pygame_async_demo/
 test/
 temp/
 my_test.py
+.DS_Store
