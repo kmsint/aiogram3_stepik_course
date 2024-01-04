@@ -20,7 +20,7 @@ formatter = logging.Formatter(
 # Инициализируем первый хэндлер, который будет писать логи в `stderr`
 handler_1 = logging.StreamHandler()
 # Инициализируем второй хэндлер, который будет писать логи в файл `critical_logs.txt`
-handler_2 = logging.FileHandler('critical_logs.txt', mode='w')
+handler_2 = logging.FileHandler('critical.log', mode='w')
 
 # Определяем форматирование логов во втором хэндлере
 handler_2.setFormatter(fmt=formatter)

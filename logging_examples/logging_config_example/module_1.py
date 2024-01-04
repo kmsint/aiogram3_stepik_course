@@ -25,7 +25,7 @@ formatter = logging.Formatter(
 )
 
 # Инициализируем хэндлер, который будет писать логи в файл `error_logs.txt`
-handler = logging.FileHandler('error_logs.txt', 'w')
+handler = logging.FileHandler('error.log', 'w')
 # Устанавливаем хэндлеру уровень `DEBUG`
 handler.setLevel(logging.DEBUG)
 
