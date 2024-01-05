@@ -5,7 +5,7 @@ from log_filters import DebugWarningLogFilter, CriticalLogFilter, ErrorLogFilter
 
 logging_config = {
     'version': 1,
-    'desable_existing_loggers': True,
+    'disable_existing_loggers': True,
     'formatters': {
         'default': {
             'format': '#%(levelname)-8s %(name)s:%(funcName)s - %(message)s'

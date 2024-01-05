@@ -1,5 +1,5 @@
 version: 1
-desable_existing_loggers: True
+disable_existing_loggers: True
 
 formatters:
   default:
