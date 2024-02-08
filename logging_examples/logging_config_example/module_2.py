@@ -33,6 +33,8 @@ logger.addHandler(stdout)
 
 def devide_number(dividend: int | float, devider: int | float):
 
+    logger.critical('Вошли в функцию %s', devide_number.__name__)
+
     logger.debug('Лог DEBUG')
     logger.info('Лог INFO')
     logger.warning('Лог WARNING')
@@ -43,3 +45,5 @@ def devide_number(dividend: int | float, devider: int | float):
         return dividend / devider
     except ZeroDivisionError:
         logger.exception('Произошло деление на 0')
+
+    logger.critical('Вышли из функции %s', devide_number.__name__)

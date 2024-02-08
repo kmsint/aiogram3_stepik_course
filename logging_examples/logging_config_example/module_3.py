@@ -36,10 +36,14 @@ logger.addHandler(critical_file)
 
 def square_number(number: int | float):
 
+    logger.critical('Вошли в функцию %s', square_number.__name__)
+
     logger.debug('Лог DEBUG')
     logger.info('Лог INFO')
     logger.warning('Лог WARNING')
     logger.error('Лог ERROR')
     logger.critical('Лог CRITICAL')
+
+    logger.critical('Вышли из функции %s', square_number.__name__)
 
     return number**2

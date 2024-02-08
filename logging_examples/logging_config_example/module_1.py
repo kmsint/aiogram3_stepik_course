@@ -41,6 +41,9 @@ logger.addHandler(error_file)
 
 
 def main():
+
+    logger.critical('Вошли в функцию %s', main.__name__)
+
     a, b = 12, 2
     c, d = 4, 0
 
@@ -52,3 +55,5 @@ def main():
 
     print(devide_number(a, square_number(b)))
     print(devide_number(square_number(c), d))
+
+    logger.critical('Вышли из функции %s', main.__name__)

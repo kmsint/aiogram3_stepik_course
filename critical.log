@@ -1,2 +1,6 @@
-#CRITICAL [2024-01-05 18:17:32,384] - Лог CRITICAL
-#CRITICAL [2024-01-05 18:17:32,386] - Лог CRITICAL
+#CRITICAL [2024-02-05 00:54:52,599] - Вошли в функцию square_number
+#CRITICAL [2024-02-05 00:54:52,599] - Лог CRITICAL
+#CRITICAL [2024-02-05 00:54:52,599] - Вышли из функции square_number
+#CRITICAL [2024-02-05 00:54:52,599] - Вошли в функцию square_number
+#CRITICAL [2024-02-05 00:54:52,600] - Лог CRITICAL
+#CRITICAL [2024-02-05 00:54:52,600] - Вышли из функции square_number
