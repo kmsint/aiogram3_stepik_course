@@ -4,7 +4,7 @@ from environs import Env
 
 @dataclass
 class TgBot:
-    token: str            # Токен для доступа к телеграм-боту
+    token: str  # Токен для доступа к телеграм-боту
 
 
 @dataclass
