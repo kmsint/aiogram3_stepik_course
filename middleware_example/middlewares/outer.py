@@ -80,3 +80,14 @@ class ThirdOuterMiddleware(BaseMiddleware):
         logger.debug('Выходим из миддлвари  %s', __class__.__name__)
 
         return result
+
+
+async def first_outer_middleware(
+    handler: Callable[[TelegramObject, Dict[str, Any]], Awaitable[Any]],
+    event: TelegramObject,
+    data: Dict[str, Any]
+) -> Any:
+
+    logger.debug('Вошли в миддлварь-функцию')
+
+    return await handler(event, data)

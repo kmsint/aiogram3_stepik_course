@@ -1,7 +1,8 @@
 import asyncio
 import logging
-from aiogram.fsm.state import StatesGroup
+
 from aiogram import Bot, Dispatcher
+from aiogram.fsm.state import StatesGroup
 from config_data.config import Config, load_config
 from handlers.other import other_router
 from handlers.user import user_router
@@ -14,6 +15,7 @@ from middlewares.outer import (
     FirstOuterMiddleware,
     SecondOuterMiddleware,
     ThirdOuterMiddleware,
+    first_outer_middleware,
 )
 
 # Настраиваем базовую конфигурацию логирования
@@ -42,7 +44,7 @@ async def main() -> None:
     dp.include_router(other_router)
 
     # Здесь будем регистрировать миддлвари
-    dp.update.outer_middleware(FirstOuterMiddleware())
+    dp.update.outer_middleware(first_outer_middleware)
     user_router.callback_query.outer_middleware(SecondOuterMiddleware())
     # other_router.message.outer_middleware(ThirdOuterMiddleware())
     # user_router.message.middleware(FirstInnerMiddleware())
