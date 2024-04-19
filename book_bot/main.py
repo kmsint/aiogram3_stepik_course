@@ -2,6 +2,8 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
+from aiogram.client.default import DefaultBotProperties
+from aiogram.enums import ParseMode
 from config_data.config import Config, load_config
 from handlers import other_handlers, user_handlers
 from keyboards.main_menu import set_main_menu
@@ -25,8 +27,10 @@ async def main():
     config: Config = load_config()
 
     # Инициализируем бот и диспетчер
-    bot = Bot(token=config.tg_bot.token,
-                   parse_mode='HTML')
+    bot = Bot(
+        token=config.tg_bot.token,
+        default=DefaultBotProperties(parse_mode=ParseMode.HTML)
+    )
     dp = Dispatcher()
 
     # Настраиваем главное меню бота

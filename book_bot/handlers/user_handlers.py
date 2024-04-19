@@ -5,8 +5,7 @@ from aiogram.filters import Command, CommandStart
 from aiogram.types import CallbackQuery, Message
 from database.database import user_dict_template, users_db
 from filters.filters import IsDelBookmarkCallbackData, IsDigitCallbackData
-from keyboards.bookmarks_kb import (create_bookmarks_keyboard,
-                                    create_edit_keyboard)
+from keyboards.bookmarks_kb import create_bookmarks_keyboard, create_edit_keyboard
 from keyboards.pagination_kb import create_pagination_keyboard
 from lexicon.lexicon import LEXICON
 from services.file_handling import book
@@ -139,7 +138,6 @@ async def process_bookmark_press(callback: CallbackQuery):
             'forward'
         )
     )
-    await callback.answer()
 
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки
@@ -152,7 +150,6 @@ async def process_edit_press(callback: CallbackQuery):
             *users_db[callback.from_user.id]["bookmarks"]
         )
     )
-    await callback.answer()
 
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки
@@ -160,7 +157,6 @@ async def process_edit_press(callback: CallbackQuery):
 @router.callback_query(F.data == 'cancel')
 async def process_cancel_press(callback: CallbackQuery):
     await callback.message.edit_text(text=LEXICON['cancel_text'])
-    await callback.answer()
 
 
 # Этот хэндлер будет срабатывать на нажатие инлайн-кнопки
@@ -179,4 +175,3 @@ async def process_del_bookmark_press(callback: CallbackQuery):
         )
     else:
         await callback.message.edit_text(text=LEXICON['no_bookmarks'])
-    await callback.answer()
